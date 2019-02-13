@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <button onclick="notification()">notification</button>
+    <script>
+        function notification() {
+            if (Notification.permission !== 'granted')
+                Notification.requestPermission().then(resp => {
+                    if (resp !== 'granted')
+                        new Notification('notification', { body: 'olá mundo' })
+                })
+            else {
+                new Notification('teste notification', { body: 'olá mundo' })
+            }
+        }
+        notification()
+    </script>
+</body>
+
+</html>
